@@ -1,4 +1,4 @@
-export default function ServiceCard({ title, description, icon, badge }: any) {
+export default function ServiceCard({ title, description, icon, badge ,onClick, realImage, fullDesc, brands }: any) {
   return (
     <div className="group relative border border-white/50 rounded-3xl p-8 bg-white/60 backdrop-blur-xl 
                     shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(42,156,148,0.15)] 
@@ -24,7 +24,11 @@ export default function ServiceCard({ title, description, icon, badge }: any) {
       <p className="text-slate-600 leading-relaxed text-base mb-8">{description}</p>
       
       {/* ปุ่มกดจำลองที่ดู Dynamic */}
-      <div className="flex items-center text-[#2a9c94] font-bold text-sm gap-2 group/link">
+      {/* แก้ไขเป็นปุ่มที่กดได้จริง */}
+      <button 
+        onClick={onClick}
+        className="flex items-center text-[#2a9c94] font-bold text-sm gap-2 group/link cursor-pointer outline-none"
+      >
          <span className="relative">
             Read Details
             <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#2a9c94] transition-all duration-300 group-hover/link:w-full"></span>
@@ -32,7 +36,7 @@ export default function ServiceCard({ title, description, icon, badge }: any) {
          <div className="w-8 h-8 rounded-full border border-[#2a9c94]/30 flex items-center justify-center group-hover/link:bg-[#2a9c94] group-hover/link:text-white transition-all">
             <span className="group-hover/link:translate-x-0.5 transition-transform">→</span>
          </div>
-      </div>
+      </button>
     </div>
   );
 }

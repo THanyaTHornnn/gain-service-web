@@ -61,11 +61,11 @@
 }
 
 #root {
-  width: 1126px;
+  /* width: 1126px;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
-  border-inline: 1px solid var(--border);
+  border-inline: 1px solid var(--border); */
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -143,5 +143,21 @@ code {
 
   .animate-float-glow {
     animation: float 6s ease-in-out infinite, glow 4s ease-in-out infinite;
+  }
+}
+
+.modal-open nav {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ปรับแต่ง Modal ให้ยืดหยุ่นบนมือถือ */
+@media (max-width: 768px) {
+  .relative.bg-white {
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 1.5rem;
   }
 }
