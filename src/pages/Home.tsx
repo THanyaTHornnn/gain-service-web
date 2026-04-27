@@ -4,7 +4,8 @@ import Services from "../sections/Services";
 import Products from "../sections/Products";
 import Contact from "../sections/Contact";
 import WhyUs from "../sections/WhyUs";
-
+import CustomOrder from "../sections/CustomOrder";
+import AboutUs from "../sections/AboutUs";
 // ตัวอย่างในไฟล์ Home.tsx หรือในส่วนเนื้อหาหลัก
 export default function Home() {
   return (
@@ -13,7 +14,10 @@ export default function Home() {
       <section id="home"> <Hero /> </section>
       <section id="services"> <Services /> </section>
       <section id="products"> <Products /> </section>
-       <WhyUs /> 
+      <section id="custom-order"> <CustomOrder /> </section>
+        <section id="aboutus"> <AboutUs /> </section>
+        
+        <WhyUs />
       <section id="contact"> <Contact /> </section>
     </>
   );

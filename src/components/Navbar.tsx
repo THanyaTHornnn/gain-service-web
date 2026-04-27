@@ -30,7 +30,7 @@ export default function Navbar() {
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     
     // เลือก Section ที่ต้องการตรวจจับ (ต้องมี id ตรงกับ href ใน Navbar)
-    const sections = ["home", "services", "products", "contact"];
+    const sections = ["home", "services", "products", "contact", "custom-order", "aboutus", "reference"];
     sections.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
@@ -74,6 +74,7 @@ export default function Navbar() {
           <a href="#home" className={`transition-all pb-1 ${getNavLinkClass("home")}`}>Home</a>
           <a href="#services" className={`transition-all pb-1 ${getNavLinkClass("services")}`}>Services</a>
           <a href="#products" className={`transition-all pb-1 ${getNavLinkClass("products")}`}>Products</a>
+          <a href="#custom-order" className={`transition-all pb-1 ${getNavLinkClass("custom-order")}`}>Custom Order</a>
           <a href="#aboutus" className={`transition-all pb-1 ${getNavLinkClass("aboutus")}`}>About Us</a>
           <a href="#reference" className={`transition-all pb-1 ${getNavLinkClass("reference")}`}>Reference</a>
           <a href="#contact" className="bg-[#2a9c94] text-white px-5 py-2 rounded-full hover:shadow-lg active:scale-95 transition-all">
@@ -98,6 +99,7 @@ export default function Navbar() {
           <a href="#" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Home</a>
           <a href="#services" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Services</a>
           <a href="#products" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Products</a>
+          <a href="#custom-order" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Custom Order</a>
           <a href="#aboutus" className="text-lg font-medium" onClick={() => setIsOpen(false)}>About Us</a>
           <a href="#reference" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Reference</a>
           <a href="#contact" className="bg-[#2a9c94] text-white px-10 py-3 rounded-full shadow-lg" onClick={() => setIsOpen(false)}>Contact Us</a>

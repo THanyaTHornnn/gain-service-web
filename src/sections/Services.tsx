@@ -30,7 +30,11 @@ export default function Services() {
       realImage: "/repair-room.png", 
       description: "ซ่อมแผงวงจร, บอร์ดคอนโทรล CNC และ Servo Drive ทุกรุ่น ทุกยี่ห้อ",
       fullDesc: "บริการรับซ่อมบอร์ดอิเล็กทรอนิกส์เครื่องจักร CNC โดยทีมช่างที่มีประสบการณ์กว่า 15 ปี เราตรวจเช็คอย่างละเอียดด้วยเครื่องมือทันสมัย",
-      brands: "Fanuc, Mitsubishi, Yaskawa, Sanyo Denki, Brother, Okuma",
+      brands: ["/logobrand/fanuc.png",
+    "/logobrand/mitsubishi.png",
+    "/logobrand/yaskawa.png",
+    "/logobrand/sanyo-denki.png",
+    "/logobrand/okuma.png"],
       features: [
         "รับประกันงานซ่อม 1 ปีเต็ม",
         "มีอะไหล่ Support ระหว่างรอซ่อม (On-loan)",
@@ -46,7 +50,7 @@ export default function Services() {
       realImage: "/stock-room.png", 
       description: "ตัวแทนจำหน่าย Collet Chuck, Guide Bush และอุปกรณ์สำหรับ Bar-Feeder",
       fullDesc: "ผู้นำเข้าและจำหน่ายอุปกรณ์ Tooling & Accessories แบรนด์ SQ Singapore สำหรับเครื่องกลึง CNC",
-      brands: "Citizen, Star, Tsugami, Miyano, Tornos, Nomura",
+      brands: ["/logobrand/citizen.png", "/logobrand/star.png", "/logobrand/tsugami.png", "/logobrand/miyano.png", "/logobrand/tornos.png", "/logobrand/nomura.png"],
       features: [
         "วัสดุคุณภาพสูง Carbide และ HSS",
         "รองรับการสั่งทำ Special Collet ตามแบบ",
@@ -62,7 +66,7 @@ export default function Services() {
       realImage: "/machine-lathe.png", 
       description: "จัดหาและขายเครื่องจักรมือสอง (CNC Lathe) พร้อมทีมงานติดตั้งและสอนใช้งาน",
       fullDesc: "บริการจัดหาเครื่องจักร CNC มือสองสภาพดี พร้อมบริการ Overhaul ปรับสภาพเครื่องให้เหมือนใหม่",
-      brands: "Brother, Citizen, Miyano, Mori Seiki, Tsugami",
+      brands: ["/logobrand/brother.png", "/logobrand/citizen.png", "/logobrand/miyano.png", "/logobrand/mori.png", "/logobrand/tsugami.png"],
       features: [
         "ตรวจเช็คระบบไฟและกลไกก่อนส่งมอบ",
         "มีทีมช่างบริการติดตั้งหน้างาน",
@@ -145,10 +149,28 @@ export default function Services() {
           <p className="text-slate-600 leading-relaxed text-sm md:text-base">{activeDetail.fullDesc}</p>
           
           {/* Supported Brands: เพิ่มระยะห่างภายใน */}
-          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+          {/* <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
             <span className="text-[10px] font-bold text-[#2a9c94] uppercase block mb-2 tracking-widest">Supported Brands</span>
             <p className="text-xs text-slate-500 font-medium leading-relaxed">{activeDetail.brands}</p>
-          </div>
+          </div> */}
+
+          <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100 shadow-inner">
+  <span className="text-[10px] font-bold text-[#2a9c94] uppercase block mb-4 tracking-widest text-center">
+    Authorized Repair & Support Brands
+  </span>
+  
+  {/* ส่วนแสดงโลโก้แบบ Grid */}
+  <div className="grid grid-cols-3 gap-4 items-center justify-items-center opacity-80 hover:opacity-100 transition-opacity">
+    {activeDetail.brands?.map((logo: string, i: number) => (
+      <img 
+        key={i} 
+        src={logo} 
+        alt="Partner Brand" 
+        className="h-6 md:h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300 object-contain"
+      />
+    ))}
+  </div>
+</div>
 
           {/* Features: ปรับให้ดูสะอาดตา ไม่เบียดขอบล่าง */}
           <div className="grid grid-cols-1 gap-3">
