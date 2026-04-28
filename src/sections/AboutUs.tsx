@@ -1,5 +1,4 @@
-import { HiOutlineUserGroup, HiOutlineCheckBadge, HiOutlineShieldCheck ,HiOutlineWrenchScrewdriver,HiOutlineCurrencyDollar} from "react-icons/hi2";
-import { useState } from "react";
+import { HiOutlineUserGroup, HiOutlineCheckBadge, HiOutlineShieldCheck } from "react-icons/hi2";
 export default function AboutUs() {
   const stats = [
     { label: "Experience", value: "15+ Years", icon: <HiOutlineUserGroup /> },

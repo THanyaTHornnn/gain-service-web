@@ -4,7 +4,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home"); // สถานะหน้าปัจจุบัน
-  const [activeDetail, setActiveDetail] = useState<any>(null); // สถานะสำหรับ Modal Detail ใน Services
+  const [activeDetail] = useState<any>(null); // สถานะสำหรับ Modal Detail ใน Services
 
   useEffect(() => {
     // 1. ตรวจจับการเลื่อนเพื่อเปลี่ยนสี Navbar (เหมือนเดิม)
