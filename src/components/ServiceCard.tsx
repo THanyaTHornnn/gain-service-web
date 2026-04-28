@@ -1,4 +1,4 @@
-export default function ServiceCard({ title, description, icon, badge ,onClick, realImage, fullDesc, brands }: any) {
+export default function ServiceCard({ title, description, icon, badge ,onClick }: any) {
   return (
     <div className="group relative border border-white/50 rounded-3xl p-8 bg-white/60 backdrop-blur-xl 
                     shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(42,156,148,0.15)] 
