@@ -17,7 +17,7 @@ function useInView(threshold = 0.15) {
   return { ref, inView };
 }
 
-export default function ProductCard({ id, anchorId, title, brand, image, description, specs }: any) {
+export default function ProductCard({ anchorId, title, brand, image, description, specs }: any) {
   const { ref, inView } = useInView();
   const [hovered, setHovered] = useState(false);
 
