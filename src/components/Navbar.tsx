@@ -1,6 +1,6 @@
+"use client";
 import { useState, useEffect } from "react";
 import { useLang } from "../context/Langcontext";
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isProductOpen, setIsProductOpen] = useState(false);
