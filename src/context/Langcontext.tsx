@@ -55,10 +55,105 @@ export const translations = {
       hq: "ที่ตั้งสำนักงานใหญ่", address: "29/55 ถนนประเสริฐมนูกิจ แขวงนวลจันทร์ เขตบึงกุ่ม กรุงเทพฯ 10230",
       callBtn: "โทรหาเราทันที", lineBtn: "ติดต่อผ่าน LINE",
       interestedIn: "กรุณาแจ้งเจ้าหน้าที่ว่าสนใจ", forQuote: "เพื่อรับใบเสนอราคา",
+      interestedProduct: "สนใจสินค้า",
     },
     machine: {
       label: "บริการและอะไหล่ที่ได้รับอนุญาต",
       title1: "เครื่องจักร", title2: "Reference", title3: "Service",
+      sub: "เชี่ยวชาญการซ่อมบำรุงและจัดหาอะไหล่สำหรับเครื่องจักร CNC แบรนด์ชั้นนำระดับโลก",
+    },
+    AboutUs: {
+      ...({} as any), // extended below
+      body1: "บริษัท เกน เซอร์วิส ได้จดทะเบียนจัดตั้งเมื่อ 30 กันยายน พ.ศ.2565 ด้วยทุนจดทะเบียน 1 ล้านบาท โดยมีวัตถุประสงค์เพื่อให้บริการซ่อมคอนโทรลเครื่องจักร จำหน่ายอะไหล่เครื่องจักร และชิ้นส่วนอิเล็คทรอนิกส์ ในอุตสาหกรรมผลิตชิ้นส่วนรถยนต์ อุตสาหกรรมอิเล็คทรอนิกส์ และโรงงานอุตสาหกรรมทั่วไป ด้วยประสบการณ์ดำเนินงานกว่า 15 ปี",
+      body2: "เรายังเป็นตัวแทนจำหน่ายอุปกรณ์เครื่องจักรแบรนด์ชั้นนำอย่าง SQ Singapore และมีบริการจัดหาเครื่องจักรมือสองสภาพดี พร้อมทีมวิศวกรดูแลติดตั้งและสอนการใช้งานอย่างครบวงจร",
+      missionItems: [
+        "มีอะไหล่ให้ลูกค้าใช้งานชั่วคราวระหว่างรอซ่อม",
+        "รับประกันสินค้างานซ่อมนานถึง 1 ปี",
+        "งานทุกชิ้นผ่านการทดสอบก่อนส่งมอบ",
+        "ราคาเหมาะสม",
+      ],
+      visionText: "The best of the Job — การมุ่งมั่นสู่ความเป็นเลิศในด้านงานบริการ บริษัทมีการจัดเตรียมสินค้าผ่านการทดสอบด้วยเครื่องมือที่ทันสมัย ตลอดจนส่งมอบสินค้าที่ดีที่สุดให้กับลูกค้า",
+    },
+    Services: {
+      ...({} as any), // extended below
+      repairFeatures: [
+        "รับประกันงานซ่อม 1 ปี",
+        "มีอะไหล่ให้ใช้งานชั่วคราวระหว่างรอซ่อม (On-loan)",
+        "งานทุกชิ้นผ่านการทดสอบ (Test) ก่อนส่งมอบ",
+        "ราคาเหมาะสม ยุติธรรม (Price-Performance)",
+      ],
+      sparepartsFeatures: [
+        "นำเข้า Collet Chuck และ Guide Bush คุณภาพสูง",
+        "รองรับเครื่อง Cincom, Tsugami, Star, Miyano",
+        "รับสั่งทำ Special Collet ตามแบบการใช้งาน",
+        "มีสต็อกพร้อมส่งเพื่อความรวดเร็วในการผลิต",
+      ],
+      machineFeatures: [
+        "ตรวจเช็คระบบไฟและกลไก (Preventive Maintenance)",
+        "บริการ Overhaul Machine ปรับสภาพเครื่องจักร",
+        "หลักสูตรสอนการใช้งาน (Training Program)",
+        "มีทีมช่างบริการติดตั้งและดูแลหลังการขาย",
+      ],
+    },
+    Products: {
+      ...({} as any), // extended below
+      quoteBtn: "ขอใบเสนอราคา (Quotation)",
+      items: [
+        {
+          title: "Collet Chuck & Guide Bush",
+          description: "อุปกรณ์จับยึดความแม่นยำสูง รองรับเครื่อง Cincom, Tsugami, Star, Miyano",
+          specs: ["High Quality Carbide & HSS", "Smooth & Grooved bore", "รองรับ Special Customize"],
+        },
+        {
+          title: "ER Collet",
+          description: "หัวจับดอกเครื่องมือตัดมาตรฐานสูง นิยมสูงสุดในงาน CNC",
+          specs: ["จับชิ้นงานได้แน่นหนา", "เปลี่ยนเครื่องมือได้รวดเร็ว", "มีช่วงขนาดการจับที่ยืดหยุ่น"],
+        },
+        {
+          title: "Fan Motor & Spare Parts",
+          description: "พัดลมระบายอากาศและอะไหล่สำหรับตู้คอนโทรลเครื่องจักร CNC",
+          specs: ["High Speed Ventilation", "Long Life Bearing", "Fanuc & Mitsubishi Compatible"],
+        },
+        {
+          title: "Drill Sleeve",
+          description: "โซลูชันสำหรับการเจาะและต๊าปเกลียวประสิทธิภาพสูง",
+          specs: ["Ultra Precision Performance", "Maximum Productivity", "High Speed Steel & Carbide"],
+        },
+        {
+          title: "Bearing",
+          description: "ลูกปืนคุณภาพสูงสำหรับเครื่องจักร ลดแรงเสียดทาน ยืดอายุการใช้งาน",
+          specs: ["ลื่นไหลไม่กินแรง", "ช่วยลดการสึกหรอ", "ยืดอายุการใช้งาน"],
+        },
+        {
+          title: "LCD Display",
+          description: "จอภาพแบบแบนคุณภาพสูงสำหรับเครื่องจักร CNC",
+          specs: ["ประหยัดพลังงาน", "ความคมชัดสูง", "น้ำหนักเบา"],
+        },
+        {
+          title: "Battery Lithium",
+          description: "แบตเตอรี่ลิเธียมประสิทธิภาพสูงสำหรับระบบสำรองข้อมูล CNC",
+          specs: ["อายุการใช้งานยาวนาน", "ความหนาแน่นพลังงานสูง", "น้ำหนักเบา"],
+        },
+        {
+          title: "Fanuc AC Servo Motor",
+          description: "มอเตอร์เซอร์โวคุณภาพสูงสำหรับเครื่องจักร CNC และระบบอัตโนมัติ",
+          specs: ["ประหยัดพลังงาน", "ระบบ HRV เพิ่มประสิทธิภาพ", "ทนทาน บำรุงรักษาง่าย"],
+        },
+        {
+          title: "MORIDOX Industrial Oil",
+          description: "น้ำมันหล่อลื่นและน้ำมันตัดกลึงประสิทธิภาพสูง สูตร Green Global Product",
+          specs: ["Cutting Oil สำหรับ Stainless & Aluminum", "Hydraulic & Gear Oil", "Grease คุณภาพสูง"],
+        },
+      ],
+    },
+    CustomOrder: {
+      ...({} as any), // extended below
+      precisionLabel: "ผลิตตามแบบมาตรฐานสากล",
+    },
+    reference: {
+      label: "บริการและอะไหล่ที่ได้รับอนุญาต",
+      title: "Machines Reference Service",
+      title1: "Machines", title2: "Reference", title3: "Service",
       sub: "เชี่ยวชาญการซ่อมบำรุงและจัดหาอะไหล่สำหรับเครื่องจักร CNC แบรนด์ชั้นนำระดับโลก",
     },
   },
@@ -116,9 +211,104 @@ export const translations = {
       hq: "Headquarters", address: "29/55 Prasertnuegit Rd., Nuan Chan, Bueng Kum, Bangkok 10230",
       callBtn: "Call Us Now", lineBtn: "Contact via LINE",
       interestedIn: "Please inform staff you are interested in", forQuote: "to receive a quotation",
+      interestedProduct: "Interested in",
     },
     machine: {
       label: "Authorized Service & Spare Parts",
+      title1: "Machines", title2: "Reference", title3: "Service",
+      sub: "Specializing in maintenance and spare parts sourcing for world-leading CNC machine brands.",
+    },
+    AboutUs: {
+      ...({} as any),
+      body1: "Gain Service Co., Ltd. was registered on September 30, 2022 with a registered capital of 1 million baht, with the objective of providing CNC machine control repair services, machine spare parts distribution, and electronic components for the automotive parts, electronics, and general manufacturing industries, with over 15 years of operational experience.",
+      body2: "We are also an authorized distributor of leading machinery equipment brand SQ Singapore, and provide sourcing of quality used machinery with a full team of engineers for installation and training.",
+      missionItems: [
+        "Loaner parts for customers while waiting for repair",
+        "1-year warranty on repaired products",
+        "Every job is tested before delivery",
+        "Fair and reasonable pricing",
+      ],
+      visionText: "The best of the Job — committed to excellence in service. We prepare all products tested with modern equipment to deliver the very best to our customers.",
+    },
+    Services: {
+      ...({} as any),
+      repairFeatures: [
+        "1-Year Repair Warranty",
+        "Loaner parts available during repair (On-loan)",
+        "Every job is tested before delivery",
+        "Fair and competitive pricing (Price-Performance)",
+      ],
+      sparepartsFeatures: [
+        "Import high-quality Collet Chuck and Guide Bush",
+        "Compatible with Cincom, Tsugami, Star, Miyano machines",
+        "Custom Special Collet orders per specification",
+        "In-stock inventory for fast production turnaround",
+      ],
+      machineFeatures: [
+        "Electrical and mechanical inspection (Preventive Maintenance)",
+        "Machine Overhaul and reconditioning service",
+        "Operator training programs",
+        "Installation team and after-sales support",
+      ],
+    },
+    Products: {
+      ...({} as any),
+      quoteBtn: "Request Quotation",
+      items: [
+        {
+          title: "Collet Chuck & Guide Bush",
+          description: "High-precision clamping tools, compatible with Cincom, Tsugami, Star, Miyano machines.",
+          specs: ["High Quality Carbide & HSS", "Smooth & Grooved bore", "Special Customize available"],
+        },
+        {
+          title: "ER Collet",
+          description: "High-standard cutting tool holder, most popular in CNC machining.",
+          specs: ["Secure workpiece grip", "Fast tool change", "Flexible size range"],
+        },
+        {
+          title: "Fan Motor & Spare Parts",
+          description: "Cooling fans and spare parts for CNC machine control cabinets.",
+          specs: ["High Speed Ventilation", "Long Life Bearing", "Fanuc & Mitsubishi Compatible"],
+        },
+        {
+          title: "Drill Sleeve",
+          description: "High-performance drilling and tapping solutions.",
+          specs: ["Ultra Precision Performance", "Maximum Productivity", "High Speed Steel & Carbide"],
+        },
+        {
+          title: "Bearing",
+          description: "High-quality bearings for machinery — reduces friction and extends service life.",
+          specs: ["Low friction operation", "Reduced wear", "Extended service life"],
+        },
+        {
+          title: "LCD Display",
+          description: "High-quality flat panel displays for CNC machines.",
+          specs: ["Energy saving", "High resolution", "Lightweight"],
+        },
+        {
+          title: "Battery Lithium",
+          description: "High-performance lithium batteries for CNC data backup systems.",
+          specs: ["Long service life", "High energy density", "Lightweight"],
+        },
+        {
+          title: "Fanuc AC Servo Motor",
+          description: "High-quality servo motors for CNC machines and automation systems.",
+          specs: ["Energy efficient", "HRV system for enhanced performance", "Durable and easy to maintain"],
+        },
+        {
+          title: "MORIDOX Industrial Oil",
+          description: "High-performance lubricants and cutting oils — Green Global Product formula.",
+          specs: ["Cutting Oil for Stainless & Aluminum", "Hydraulic & Gear Oil", "High-quality Grease"],
+        },
+      ],
+    },
+    CustomOrder: {
+      ...({} as any),
+      precisionLabel: "Manufactured to international standards",
+    },
+    reference: {
+      label: "Authorized Service & Spare Parts",
+      title: "Machines Reference Service",
       title1: "Machines", title2: "Reference", title3: "Service",
       sub: "Specializing in maintenance and spare parts sourcing for world-leading CNC machine brands.",
     },
