@@ -69,22 +69,33 @@ export default function MachineReference() {
               {t.machine.title1} <span className="text-[#2a9c94]">{t.machine.title2}</span> {t.machine.title3}
             </p>
           </div>
-          <p className="text-slate-500 text-sm md:max-w-xs leading-relaxed">{t.machine.sub}</p>
+          <div className="flex flex-col items-end gap-2">
+            <p className="text-slate-500 text-sm md:max-w-xs leading-relaxed text-right">{t.machine.sub}</p>
+            {/* Trust badge */}
+            <div className="flex items-center gap-2 bg-[#2a9c94]/10 border border-[#2a9c94]/20 rounded-full px-4 py-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#2a9c94] animate-pulse inline-block" />
+              <span className="text-[#2a9c94] text-xs font-bold uppercase tracking-widest" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                {machineBrands.length}+ Certified Brands
+              </span>
+            </div>
+          </div>
         </div>
 
-        {/* Marquee */}
+        {/* Brand showcase */}
         <div
           ref={gridRef}
-          className="bg-white/80 backdrop-blur-sm rounded-[3rem] py-10 shadow-sm border border-slate-100 overflow-hidden"
+          className="bg-white/90 backdrop-blur-sm rounded-[3rem] py-10 shadow-sm border border-slate-100 overflow-hidden"
           style={{
             opacity: gridIn ? 1 : 0,
             transform: gridIn ? "translateY(0)" : "translateY(40px)",
             transition: "opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s",
+            boxShadow: "0 4px 24px -8px rgba(42,156,148,0.12), 0 1px 3px rgba(0,0,0,0.04)",
           }}
         >
+          {/* Marquee ticker */}
           <div className="flex overflow-hidden relative">
-            <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: "linear-gradient(to right, rgba(255,255,255,0.9), transparent)" }} />
-            <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: "linear-gradient(to left, rgba(255,255,255,0.9), transparent)" }} />
+            <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: "linear-gradient(to right, rgba(255,255,255,0.95), transparent)" }} />
+            <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: "linear-gradient(to left, rgba(255,255,255,0.95), transparent)" }} />
 
             <div className="marquee-track">
               {marqueeItems.map((brand, index) => (
@@ -97,20 +108,11 @@ export default function MachineReference() {
                     <img
                       src={brand.logo}
                       alt={brand.name}
-                      className="max-w-full max-h-full object-contain"
-                      style={{ filter: "grayscale(1) opacity(0.5)", transition: "filter 0.4s ease, transform 0.3s ease" }}
-                      onMouseEnter={(e) => {
-                        (e.target as HTMLImageElement).style.filter = "grayscale(0) opacity(1)";
-                        (e.target as HTMLImageElement).style.transform = "scale(1.1)";
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.target as HTMLImageElement).style.filter = "grayscale(1) opacity(0.5)";
-                        (e.target as HTMLImageElement).style.transform = "scale(1)";
-                      }}
+                      className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
                     />
                   </div>
                   <span
-                    className="mt-2 text-[9px] font-bold text-slate-300 group-hover:text-[#2a9c94] transition-colors uppercase tracking-widest text-center leading-tight"
+                    className="mt-2 text-[9px] font-bold text-slate-400 group-hover:text-[#2a9c94] transition-colors uppercase tracking-widest text-center leading-tight"
                     style={{ fontFamily: "'Outfit', sans-serif" }}
                   >
                     {brand.name}
@@ -121,7 +123,7 @@ export default function MachineReference() {
           </div>
 
           {/* Static grid lg */}
-          <div className="hidden lg:grid grid-cols-6 gap-8 items-center px-16 mt-10 pt-8 border-t border-slate-50">
+          <div className="hidden lg:grid grid-cols-6 gap-8 items-center px-16 mt-10 pt-8 border-t border-slate-100">
             {machineBrands.slice(0, 6).map((brand, index) => (
               <div
                 key={index}
@@ -132,11 +134,15 @@ export default function MachineReference() {
                   transition: `opacity 0.5s ease ${0.1 + index * 0.07}s, transform 0.5s ease ${0.1 + index * 0.07}s`,
                 }}
               >
-                <div className="w-full aspect-[3/2] flex items-center justify-center p-3 rounded-2xl group-hover:bg-slate-50 transition-colors">
-                  <img src={brand.logo} alt={brand.name} className="max-w-full max-h-full object-contain brand-logo" />
+                <div className="w-full aspect-[3/2] flex items-center justify-center p-3 rounded-2xl group-hover:bg-slate-50 group-hover:shadow-sm transition-all duration-300">
+                  <img
+                    src={brand.logo}
+                    alt={brand.name}
+                    className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                  />
                 </div>
                 <span
-                  className="mt-2 text-[9px] font-bold text-slate-300 group-hover:text-[#2a9c94] transition-colors uppercase tracking-widest"
+                  className="mt-2 text-[9px] font-bold text-slate-400 group-hover:text-[#2a9c94] transition-colors uppercase tracking-widest"
                   style={{ fontFamily: "'Outfit', sans-serif" }}
                 >
                   {brand.name}

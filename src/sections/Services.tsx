@@ -30,13 +30,14 @@ export default function Services() {
       realImage: "/repair-room.png",
       description: t.services.repair.desc,
       fullDesc: t.services.repair.fullDesc,
-      brands: ["/logobrand/fanuc.png", "/logobrand/mitsubishi.png", "/logobrand/yaskawa.png", "/logobrand/sanyo-denki.png", "/logobrand/okuma.png"],
-      features: [
-        t.services.warranty,
-        "มีอะไหล่ให้ใช้งานชั่วคราวระหว่างรอซ่อม (On-loan)",
-        "งานทุกชิ้นผ่านการทดสอบ (Test) ก่อนส่งมอบ",
-        "ราคาเหมาะสม ยุติธรรม (Price-Performance)",
+      brands: [
+        "/logobrand/fanuc.png",
+        "/logobrand/mitsubishi.png",
+        "/logobrand/yaskawa.png",
+        "/logobrand/sanyo-denki.png",
+        "/logobrand/okuma.png",
       ],
+      features: t.services.repairFeatures,
     },
     {
       id: "spareparts",
@@ -46,13 +47,14 @@ export default function Services() {
       realImage: "/stock-room.png",
       description: t.services.spareparts.desc,
       fullDesc: t.services.spareparts.fullDesc,
-      brands: ["/logobrand/citizen.png", "/logobrand/star.png", "/logobrand/tsugami.png", "/logobrand/miyano.png", "/logobrand/nomura.png"],
-      features: [
-        "นำเข้า Collet Chuck และ Guide Bush คุณภาพสูง",
-        "รองรับเครื่อง Cincom, Tsugami, Star, Miyano",
-        "รับสั่งทำ Special Collet ตามแบบการใช้งาน",
-        "มีสต็อกพร้อมส่งเพื่อความรวดเร็วในการผลิต",
+      brands: [
+        "/logobrand/citizen.png",
+        "/logobrand/star.png",
+        "/logobrand/tsugami.png",
+        "/logobrand/miyano.png",
+        "/logobrand/nomura.png",
       ],
+      features: t.services.sparepartsFeatures,
     },
     {
       id: "machine",
@@ -62,13 +64,14 @@ export default function Services() {
       realImage: "/machine-lathe.png",
       description: t.services.machine.desc,
       fullDesc: t.services.machine.fullDesc,
-      brands: ["/logobrand/brother.png", "/logobrand/citizen.png", "/logobrand/miyano.png", "/logobrand/mori.png", "/logobrand/tsugami.png"],
-      features: [
-        "ตรวจเช็คระบบไฟและกลไก (Preventive Maintenance)",
-        "บริการ Overhaul Machine ปรับสภาพเครื่องจักร",
-        "หลักสูตรสอนการใช้งาน (Training Program)",
-        "มีทีมช่างบริการติดตั้งและดูแลหลังการขาย",
+      brands: [
+        "/logobrand/brother.png",
+        "/logobrand/citizen.png",
+        "/logobrand/miyano.png",
+        "/logobrand/mori.png",
+        "/logobrand/tsugami.png",
       ],
+      features: t.services.machineFeatures,
     },
   ];
 
@@ -145,6 +148,7 @@ export default function Services() {
 
                 <p className="text-slate-600 mb-8 leading-relaxed">{activeDetail.fullDesc}</p>
 
+                {/* Brand logos — full color, no grayscale */}
                 <div className="mb-8 p-6 bg-slate-50 rounded-[2rem] border border-slate-100">
                   <p
                     className="text-[10px] font-black text-[#2a9c94] uppercase tracking-widest mb-4 text-center"
@@ -154,7 +158,13 @@ export default function Services() {
                   </p>
                   <div className="grid grid-cols-3 gap-6 items-center">
                     {activeDetail.brands.map((logo: string, i: number) => (
-                      <img key={i} src={logo} className="h-6 md:h-8 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 mx-auto" alt="brand" />
+                      <div key={i} className="flex items-center justify-center p-2 rounded-xl hover:bg-white hover:shadow-sm transition-all duration-300">
+                        <img
+                          src={logo}
+                          className="h-7 md:h-9 w-auto object-contain transition-transform duration-300 hover:scale-110 mx-auto"
+                          alt="brand"
+                        />
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -170,7 +180,7 @@ export default function Services() {
 
                 <div className="mt-auto grid grid-cols-2 gap-4">
                   <a
-                    href="tel:029469475"
+                    href="tel:021300709"
                     className="flex items-center justify-center gap-2 bg-[#2a9c94] text-white py-4 rounded-2xl font-bold shadow-lg hover:shadow-[#2a9c94]/30 hover:-translate-y-1 transition-all active:scale-95"
                     style={{ fontFamily: "'Outfit', sans-serif" }}
                   >
@@ -193,7 +203,6 @@ export default function Services() {
         {/* Bottom banner */}
         <div className="mt-24 p-10 md:p-14 rounded-[3rem] text-white relative overflow-hidden group dark-section">
           <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#2a9c94]/20 rounded-full blur-[100px] transition-all group-hover:bg-[#2a9c94]/30" />
-          {/* Dot grid inside dark section */}
           <div className="absolute inset-0 opacity-[0.06] pointer-events-none bg-[radial-gradient(rgba(255,255,255,0.8)_1px,transparent_1px)] [background-size:20px_20px] rounded-[3rem]" />
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-center md:text-left">

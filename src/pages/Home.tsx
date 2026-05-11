@@ -1,4 +1,4 @@
-import { LangProvider } from "../context/Langcontext";
+
 import Navbar from "../components/Navbar";
 import Hero from "../sections/Hero";
 import Services from "../sections/Services";
@@ -12,7 +12,7 @@ import MachineReference from "../sections/MachineReference";
 
 export default function Home() {
   return (
-    <LangProvider>
+    <>
       <Navbar />
       <section id="home"><Hero /></section>
       <MachineReference />
@@ -23,6 +23,6 @@ export default function Home() {
       <section id="reference"><Reference /></section>
       <WhyUs />
       <section id="contact"><Contact /></section>
-    </LangProvider>
+    </>
   );
 }

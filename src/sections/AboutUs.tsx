@@ -12,7 +12,7 @@ export default function AboutUs() {
 
   return (
     <section
-      id="about"
+      id="aboutus"
       className="py-24 overflow-hidden"
       style={{ fontFamily: "'Sarabun', sans-serif" }}
     >
@@ -59,15 +59,11 @@ export default function AboutUs() {
             </h2>
 
             <p className="text-slate-600 text-lg mb-6 leading-relaxed">
-              <strong>บริษัท เกน เซอร์วิส</strong> ได้จดทะเบียนจัดตั้งเมื่อ 30 กันยายน พ.ศ.2565 ด้วยทุนจดทะเบียน 1 ล้านบาท
-              โดยมีวัตถุประสงค์เพื่อให้บริการซ่อมคอนโทรลเครื่องจักร จำหน่ายอะไหล่เครื่องจักร และชิ้นส่วนอิเล็คทรอนิกส์
-              ในอุตสาหกรรมผลิตชิ้นส่วนรถยนต์ อุตสาหกรรมอิเล็คทรอนิกส์ และโรงงานอุตสาหกรรมทั่วไป
-              ด้วยประสบการณ์ดำเนินงานกว่า 15 ปี
+              <strong>{t.about.companyName}</strong> {t.about.body1}
             </p>
 
             <p className="text-slate-600 mb-10 leading-relaxed">
-              เรายังเป็นตัวแทนจำหน่ายอุปกรณ์เครื่องจักรแบรนด์ชั้นนำอย่าง <strong>SQ Singapore</strong>
-              และมีบริการจัดหาเครื่องจักรมือสองสภาพดี พร้อมทีมวิศวกรดูแลติดตั้งและสอนการใช้งานอย่างครบวงจร
+              {t.about.body2}
             </p>
 
             {/* Stats */}
@@ -109,12 +105,7 @@ export default function AboutUs() {
               <span className="text-[#2a9c94]">{t.about.mission}</span>
             </h4>
             <div className="space-y-3 relative z-10">
-              {[
-                "มีอะไหล่ให้ลูกค้าใช้งานชั่วคราวระหว่างรอซ่อม",
-                "รับประกันสินค้างานซ่อมนานถึง 1 ปี",
-                "งานทุกชิ้นผ่านการทดสอบก่อนส่งมอบ",
-                "ราคาเหมาะสม",
-              ].map((item, i) => (
+              {t.about.missionItems.map((item: string, i: number) => (
                 <p key={i} className="text-white/80 flex gap-2">
                   <span className="text-[#2a9c94]">❖</span> {item}
                 </p>
@@ -132,9 +123,7 @@ export default function AboutUs() {
               {t.about.vision}
             </h4>
             <p className="text-white/85 relative z-10 leading-relaxed">
-              The best of the Job — การมุ่งมั่นสู่ความเป็นเลิศในด้านงานบริการ
-              บริษัทมีการจัดเตรียมสินค้าผ่านการทดสอบด้วยเครื่องมือที่ทันสมัย
-              ตลอดจนส่งมอบสินค้าที่ดีที่สุดให้กับลูกค้า
+              {t.about.visionText}
             </p>
             <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-10 -mt-10" />
           </div>

@@ -2,7 +2,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Send, ChevronRight } from "lucide-react";
 
-// Hook: ตรวจจับเมื่อ element เข้ามาใน viewport
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
@@ -17,17 +16,15 @@ function useInView(threshold = 0.15) {
   return { ref, inView };
 }
 
-export default function ProductCard({ anchorId, title, brand, image, description, specs }: any) {
+export default function ProductCard({ anchorId, title, brand, image, description, specs, quoteLabel }: any) {
   const { ref, inView } = useInView();
   const [hovered, setHovered] = useState(false);
 
-  // คลิกปุ่ม "ขอใบเสนอราคา" → scroll ไปหน้า contact พร้อมชื่อสินค้า
   const handleQuote = (e: React.MouseEvent) => {
     e.preventDefault();
     const contactSection = document.getElementById("contact");
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: "smooth" });
-      // ส่งชื่อสินค้าผ่าน custom event (Contact form สามารถรับได้)
       window.dispatchEvent(new CustomEvent("product-quote", { detail: { product: title } }));
     }
   };
@@ -55,7 +52,7 @@ export default function ProductCard({ anchorId, title, brand, image, description
           transition: "box-shadow 0.4s ease, transform 0.4s ease",
         }}
       >
-        {/* รูปภาพสินค้า */}
+        {/* Product image */}
         <div className="aspect-square overflow-hidden relative bg-gradient-to-br from-slate-50 to-slate-100">
           <img
             src={image}
@@ -64,7 +61,6 @@ export default function ProductCard({ anchorId, title, brand, image, description
             style={{ transform: hovered ? "scale(1.1)" : "scale(1)" }}
           />
 
-          {/* Shimmer overlay เวลา hover */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -87,7 +83,6 @@ export default function ProductCard({ anchorId, title, brand, image, description
             )}
           </div>
 
-          {/* Teal accent corner */}
           <div
             className="absolute bottom-0 right-0 w-16 h-16 rounded-tl-[2rem]"
             style={{
@@ -98,12 +93,12 @@ export default function ProductCard({ anchorId, title, brand, image, description
           />
         </div>
 
-        {/* รายละเอียด */}
+        {/* Details */}
         <div className="p-8 flex flex-col flex-1">
           <div className="flex-1">
             <h3
               className="text-xl font-bold text-slate-900 mb-3 leading-tight transition-colors duration-300"
-              style={{ color: hovered ? "#2a9c94" : "#0f172a" }}
+              style={{ color: hovered ? "#2a9c94" : "#0f172a", fontFamily: "'Outfit', sans-serif" }}
             >
               {title}
             </h3>
@@ -128,7 +123,7 @@ export default function ProductCard({ anchorId, title, brand, image, description
             </div>
           </div>
 
-          {/* ปุ่มขอใบเสนอราคา */}
+          {/* Quote button */}
           <button
             onClick={handleQuote}
             className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-bold text-sm transition-all duration-300 active:scale-95 mt-auto"
@@ -137,10 +132,11 @@ export default function ProductCard({ anchorId, title, brand, image, description
               color: hovered ? "white" : "#0f172a",
               border: hovered ? "2px solid #2a9c94" : "2px solid #e2e8f0",
               boxShadow: hovered ? "0 10px 25px -5px rgba(42,156,148,0.3)" : "none",
+              fontFamily: "'Outfit', sans-serif",
             }}
           >
             <Send size={15} />
-            ขอใบเสนอราคา (Quotation)
+            {quoteLabel || "Request Quotation"}
           </button>
         </div>
       </div>

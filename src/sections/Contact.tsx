@@ -2,6 +2,13 @@
 import { useEffect, useRef, useState } from "react";
 import { Phone, Mail, MessageCircle, MapPin, Clock } from "lucide-react";
 
+const FacebookIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+  </svg>
+);
+import { useLang } from "../context/Langcontext";
+
 function useInView(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
@@ -18,9 +25,9 @@ function useInView(threshold = 0.1) {
 
 export default function Contact() {
   const { ref, inView } = useInView();
+  const { t } = useLang();
   const [productName, setProductName] = useState("");
 
-  // รับ custom event จาก ProductCard เมื่อกดขอใบเสนอราคา
   useEffect(() => {
     const handler = (e: any) => {
       setProductName(e.detail?.product || "");
@@ -46,14 +53,22 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto" ref={ref}>
         {/* Header */}
         <div className="text-center mb-16" style={cardStyle(0)}>
-          <h2 className="text-[#2a9c94] font-bold tracking-widest text-sm uppercase mb-3">Get In Touch</h2>
-          <p className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
-            Contact <span className="text-[#2a9c94]">Us</span>
+          <div className="accent-bar mx-auto" />
+          <h2
+            className="text-[#2a9c94] font-bold tracking-widest text-sm uppercase mb-3"
+            style={{ fontFamily: "'Outfit', sans-serif" }}
+          >
+            {t.contact.getInTouch}
+          </h2>
+          <p
+            className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight"
+            style={{ fontFamily: "'Outfit', sans-serif" }}
+          >
+            {t.contact.title} <span className="text-[#2a9c94]">{t.contact.label}</span>
           </p>
           {productName && (
             <div className="mt-4 inline-flex items-center gap-2 bg-[#2a9c94]/10 border border-[#2a9c94]/20 text-[#2a9c94] px-5 py-2 rounded-full text-sm font-bold">
-              <span>📦</span>
-              <span>สนใจสินค้า: {productName}</span>
+              <span>{t.contact.interestedProduct}: {productName}</span>
               <button onClick={() => setProductName("")} className="ml-2 opacity-60 hover:opacity-100">✕</button>
             </div>
           )}
@@ -63,37 +78,46 @@ export default function Contact() {
           {/* Contact Info */}
           <div className="lg:col-span-1" style={cardStyle(0.1)}>
             <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100 h-full">
-              <h3 className="text-xl font-bold text-slate-900 mb-8">ข้อมูลการติดต่อ</h3>
+              <h3
+                className="text-xl font-bold text-slate-900 mb-8"
+                style={{ fontFamily: "'Outfit', sans-serif" }}
+              >
+                {t.contact.info}
+              </h3>
 
               <div className="space-y-6">
                 <a
-                  href="tel:029469475"
+                  href="tel:021300709"
                   className="flex items-center gap-4 group cursor-pointer"
                 >
                   <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                     <Phone size={20} />
                   </div>
                   <div>
-                    <p className="text-xs text-slate-400 font-bold uppercase">Call Us</p>
-                    <p className="font-bold text-slate-700">02-9469475</p>
+                    <p className="text-xs text-slate-400 font-bold uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                      {t.contact.callUs}
+                    </p>
+                    <p className="font-bold text-slate-700">02-1300709</p>
                   </div>
                 </a>
 
                 <a
-                  href="mailto:gainservice@gmail.com"
+                  href="mailto:gainservices.cnc@gmail.com"
                   className="flex items-center gap-4 group cursor-pointer"
                 >
                   <div className="w-12 h-12 rounded-2xl bg-red-50 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
                     <Mail size={20} />
                   </div>
                   <div>
-                    <p className="text-xs text-slate-400 font-bold uppercase">Email Address</p>
-                    <p className="font-bold text-slate-700">gainservice@gmail.com</p>
+                    <p className="text-xs text-slate-400 font-bold uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                      {t.contact.email}
+                    </p>
+                    <p className="font-bold text-slate-700">gainservices.cnc@gmail.com</p>
                   </div>
                 </a>
 
                 <a
-                  href="https://line.me/R/ti/p/@gainservice"
+                  href="https://line.me/R/ti/p/0992170758"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 group cursor-pointer"
@@ -102,8 +126,28 @@ export default function Contact() {
                     <MessageCircle size={20} />
                   </div>
                   <div>
-                    <p className="text-xs text-slate-400 font-bold uppercase">Line Official</p>
-                    <p className="font-bold text-slate-700">@gainservice</p>
+                    <p className="text-xs text-slate-400 font-bold uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                      {t.contact.line}
+                    </p>
+                    <p className="font-bold text-slate-700">0992170758</p>
+                  </div>
+                </a>
+
+                {/* Facebook */}
+                <a
+                  href="https://www.facebook.com/gain.887002?mibextid=wwXIfr&rdid=Q7cRu6JijkkZLWOi&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E81N8UuHt%2F%3Fmibextid%3DwwXIfr#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 group cursor-pointer"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-[#1877F2]/10 flex items-center justify-center text-[#1877F2] group-hover:bg-[#1877F2] group-hover:text-white transition-all duration-300">
+                    <FacebookIcon />
+                  </div>
+                  <div>
+                    <p className="text-xs text-slate-400 font-bold uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                      Facebook
+                    </p>
+                    <p className="font-bold text-slate-700">Gain Service</p>
                   </div>
                 </a>
               </div>
@@ -115,9 +159,11 @@ export default function Contact() {
                   <Clock size={20} />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-400 font-bold uppercase">Business Hours</p>
-                  <p className="font-bold text-slate-700 text-sm">จันทร์ - เสาร์: 08:30 - 17:30 น.</p>
-                  <p className="text-slate-400 text-xs mt-1">หยุดทุกวันอาทิตย์</p>
+                  <p className="text-xs text-slate-400 font-bold uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                    {t.contact.hours}
+                  </p>
+                  <p className="font-bold text-slate-700 text-sm">{t.contact.hoursVal}</p>
+                  <p className="text-slate-400 text-xs mt-1">{t.contact.closed}</p>
                 </div>
               </div>
             </div>
@@ -131,14 +177,17 @@ export default function Contact() {
                   <MapPin size={24} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">ที่ตั้งสำนักงานใหญ่</h3>
-                  <p className="text-slate-500 leading-relaxed">
-                    29/55 ถนนประเสริฐมนูกิจ แขวงนวลจันทร์ เขตบึงกุ่ม กรุงเทพฯ 10230
-                  </p>
+                  <h3
+                    className="text-xl font-bold text-slate-900 mb-2"
+                    style={{ fontFamily: "'Outfit', sans-serif" }}
+                  >
+                    {t.contact.hq}
+                  </h3>
+                  <p className="text-slate-500 leading-relaxed">{t.contact.address}</p>
                 </div>
               </div>
 
-              {/* Map placeholder */}
+              {/* Map */}
               <div className="flex-grow bg-gradient-to-br from-slate-50 to-slate-100 rounded-[2rem] overflow-hidden min-h-[300px] relative border border-slate-200">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3873.8!2d100.65!3d13.82!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQ5JzEyLjAiTiAxMDDCsDM5JzAwLjAiRQ!5e0!3m2!1sth!2sth!4v1"
@@ -149,34 +198,39 @@ export default function Contact() {
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Gain Service Location"
                 />
-                {/* Overlay fallback เผื่อ iframe โหลดไม่ได้ */}
-                <div className="absolute inset-0 flex items-center justify-center text-slate-400 flex-col gap-2 pointer-events-none opacity-0">
-                  <MapPin size={32} />
-                  <p className="font-bold uppercase tracking-widest text-xs">Gain Service Co., Ltd</p>
-                </div>
               </div>
 
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
-                  href="tel:029469475"
+                  href="tel:021300709"
                   className="btn-glow flex-1 min-w-[200px] bg-[#2a9c94] text-white py-4 rounded-2xl font-bold text-center hover:shadow-lg hover:shadow-[#2a9c94]/30 transition-all active:scale-95 flex items-center justify-center gap-2"
+                  style={{ fontFamily: "'Outfit', sans-serif" }}
                 >
-                  <Phone size={18} /> โทรหาเราทันที
+                  <Phone size={18} /> {t.contact.callBtn}
                 </a>
                 <a
-                  href="https://line.me/R/ti/p/@gainservice"
+                  href="https://line.me/R/ti/p/099-2170758"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-glow flex-1 min-w-[200px] bg-[#00B900] text-white py-4 rounded-2xl font-bold text-center hover:shadow-lg hover:shadow-green-500/30 transition-all active:scale-95 flex items-center justify-center gap-2"
+                  style={{ fontFamily: "'Outfit', sans-serif" }}
                 >
-                  <MessageCircle size={18} /> ติดต่อผ่าน LINE
+                  <MessageCircle size={18} /> {t.contact.lineBtn}
+                </a>
+                <a
+                  href="https://www.facebook.com/gain.887002?mibextid=wwXIfr&rdid=Q7cRu6JijkkZLWOi&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E81N8UuHt%2F%3Fmibextid%3DwwXIfr#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-glow flex-1 min-w-[200px] bg-[#1877F2] text-white py-4 rounded-2xl font-bold text-center hover:shadow-lg hover:shadow-[#1877F2]/30 transition-all active:scale-95 flex items-center justify-center gap-2"
+                  style={{ fontFamily: "'Outfit', sans-serif" }}
+                >
+                  <FacebookIcon /> Facebook
                 </a>
               </div>
 
-              {/* แสดงชื่อสินค้าที่กดมาจาก ProductCard */}
               {productName && (
                 <div className="mt-4 p-4 rounded-2xl bg-[#2a9c94]/5 border border-[#2a9c94]/15 text-sm text-slate-600">
-                  💬 กรุณาแจ้งเจ้าหน้าที่ว่าสนใจ <strong className="text-[#2a9c94]">{productName}</strong> เพื่อรับใบเสนอราคา
+                   {t.contact.interestedIn} <strong className="text-[#2a9c94]">{productName}</strong> {t.contact.forQuote}
                 </div>
               )}
             </div>

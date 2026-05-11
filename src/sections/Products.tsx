@@ -6,77 +6,34 @@ export default function Products() {
   const [filter, setFilter] = useState("all");
   const { t } = useLang();
 
-  const products = [
-    {
-      id: 1, category: "cnc", anchorId: "products-cnc",
-      title: "Collet Chuck & Guide Bush", brand: "GAIN SERVICE",
-      image: "/products/collet.png",
-      description: "อุปกรณ์จับยึดความแม่นยำสูง รองรับเครื่อง Cincom, Tsugami, Star, Miyano",
-      specs: ["High Quality Carbide & HSS", "Smooth & Grooved bore", "รองรับ Special Customize"],
-    },
-    {
-      id: 2, category: "cnc",
-      title: "ER Collet", brand: "GAIN SERVICE",
-      image: "/products/er.png",
-      description: "หัวจับดอกเครื่องมือตัดมาตรฐานสูง นิยมสูงสุดในงาน CNC",
-      specs: ["จับชิ้นงานได้แน่นหนา", "เปลี่ยนเครื่องมือได้รวดเร็ว", "มีช่วงขนาดการจับที่ยืดหยุ่น"],
-    },
-    {
-      id: 3, category: "cnc",
-      title: "Fan Motor & Spare Parts", brand: "GAIN SERVICE",
-      image: "/products/fan-motor.png",
-      description: "พัดลมระบายอากาศและอะไหล่สำหรับตู้คอนโทรลเครื่องจักร CNC",
-      specs: ["High Speed Ventilation", "Long Life Bearing", "Fanuc & Mitsubishi Compatible"],
-    },
-    {
-      id: 4, category: "cnc",
-      title: "Drill Sleeve", brand: "GAIN SERVICE",
-      image: "/products/drilling.png",
-      description: "โซลูชันสำหรับการเจาะและต๊าปเกลียวประสิทธิภาพสูง",
-      specs: ["Ultra Precision Performance", "Maximum Productivity", "High Speed Steel & Carbide"],
-    },
-    {
-      id: 5, category: "cnc",
-      title: "Bearing", brand: "GAIN SERVICE",
-      image: "/products/bearing.png",
-      description: "ลูกปืนคุณภาพสูงสำหรับเครื่องจักร ลดแรงเสียดทาน ยืดอายุการใช้งาน",
-      specs: ["ลื่นไหลไม่กินแรง", "ช่วยลดการสึกหรอ", "ยืดอายุการใช้งาน"],
-    },
-    {
-      id: 6, category: "cnc",
-      title: "LCD Display", brand: "GAIN SERVICE",
-      image: "/products/lcd.png",
-      description: "จอภาพแบบแบนคุณภาพสูงสำหรับเครื่องจักร CNC",
-      specs: ["ประหยัดพลังงาน", "ความคมชัดสูง", "น้ำหนักเบา"],
-    },
-    {
-      id: 7, category: "cnc",
-      title: "Battery Lithium", brand: "GAIN SERVICE",
-      image: "/products/battery.png",
-      description: "แบตเตอรี่ลิเธียมประสิทธิภาพสูงสำหรับระบบสำรองข้อมูล CNC",
-      specs: ["อายุการใช้งานยาวนาน", "ความหนาแน่นพลังงานสูง", "น้ำหนักเบา"],
-    },
-    {
-      id: 8, category: "cnc",
-      title: "Fanuc AC Servo Motor", brand: "GAIN SERVICE",
-      image: "/products/motor.png",
-      description: "มอเตอร์เซอร์โวคุณภาพสูงสำหรับเครื่องจักร CNC และระบบอัตโนมัติ",
-      specs: ["ประหยัดพลังงาน", "ระบบ HRV เพิ่มประสิทธิภาพ", "ทนทาน บำรุงรักษาง่าย"],
-    },
-    {
-      id: 9, category: "oil", anchorId: "products-oil",
-      title: "MORIDOX Industrial Oil", brand: "GAIN SERVICE",
-      image: "/products/oil.png",
-      description: "น้ำมันหล่อลื่นและน้ำมันตัดกลึงประสิทธิภาพสูง สูตร Green Global Product",
-      specs: ["Cutting Oil สำหรับ Stainless & Aluminum", "Hydraulic & Gear Oil", "Grease คุณภาพสูง"],
-    },
+  const categories = ["all", "cnc", "oil"];
+  const categoryLabels: Record<string, string> = {
+    all: t.products.all,
+    cnc: t.products.cnc,
+    oil: t.products.oil,
+  };
+
+  // Product definitions: metadata fixed, text from translations
+  const productMeta = [
+    { id: 1, category: "cnc", anchorId: "products-cnc", brand: "GAIN SERVICE", image: "/products/collet.png" },
+    { id: 2, category: "cnc", brand: "GAIN SERVICE", image: "/products/er.png" },
+    { id: 3, category: "cnc", brand: "GAIN SERVICE", image: "/products/fan-motor.png" },
+    { id: 4, category: "cnc", brand: "GAIN SERVICE", image: "/products/drilling.png" },
+    { id: 5, category: "cnc", brand: "GAIN SERVICE", image: "/products/bearing.png" },
+    { id: 6, category: "cnc", brand: "GAIN SERVICE", image: "/products/lcd.png" },
+    { id: 7, category: "cnc", brand: "GAIN SERVICE", image: "/products/battery.png" },
+    { id: 8, category: "cnc", brand: "GAIN SERVICE", image: "/products/motor.png" },
+    { id: 9, category: "oil", anchorId: "products-oil", brand: "GAIN SERVICE", image: "/products/oil.png" },
   ];
 
-  const tabs = [
-    { id: "all", label: t.products.all },
-    { id: "cnc", label: t.products.cnc },
-    { id: "oil", label: t.products.oil },
-  ];
+  const products = productMeta.map((meta, i) => ({
+    ...meta,
+    title: t.products.items[i].title,
+    description: t.products.items[i].description,
+    specs: t.products.items[i].specs,
+  }));
+
+  const tabs = categories.map((id) => ({ id, label: categoryLabels[id] }));
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -136,7 +93,7 @@ export default function Products() {
             .filter((p) => filter === "all" || p.category === filter)
             .map((product) => (
               <div key={product.id} id={product.anchorId} className="scroll-mt-32">
-                <ProductCard {...product} quoteLabel={t.products.quote} />
+                <ProductCard {...product} quoteLabel={t.products.quoteBtn} />
               </div>
             ))}
         </div>

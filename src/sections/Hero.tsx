@@ -138,7 +138,7 @@ export default function Hero() {
 
             <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-16" style={fadeIn(0.5)}>
               <a
-                href="tel:029469475"
+                href="#contact"
                 className="btn-glow bg-[#f2e900] text-slate-900 px-8 py-4 rounded-2xl font-black hover:bg-[#d9d100] transition-all shadow-lg shadow-yellow-200/60 hover:-translate-y-1 active:scale-95"
                 style={{ fontFamily: "'Outfit', sans-serif" }}
               >

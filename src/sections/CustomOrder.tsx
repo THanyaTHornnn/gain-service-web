@@ -1,6 +1,7 @@
 import { useLang } from "../context/Langcontext";
 
 export default function CustomOrder() {
+   console.log("CustomOrder");
   const { t } = useLang();
 
   return (
@@ -36,18 +37,13 @@ export default function CustomOrder() {
               className="text-4xl md:text-5xl font-black mb-8 leading-tight"
               style={{ fontFamily: "'Outfit', sans-serif" }}
             >
-               <span className="text-white">{t.customOrder.title1}</span> <br />
+              <span className="text-white">{t.customOrder.title1}</span> <br />
               <span className="text-[#f2e900]">{t.customOrder.title2}</span>
             </h2>
             <p className="text-slate-400 text-lg mb-10 leading-relaxed">{t.customOrder.desc}</p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
-              {[
-                { t: "Special Shapes", d: "Square, Hexagon, Triangle" },
-                { t: "Custom Bore", d: "Smooth / Grooved Bore" },
-                { t: "Materials", d: "High Quality Carbide & HSS" },
-                { t: "Precision", d: "ผลิตตามแบบมาตรฐานสากล" },
-              ].map((item, i) => (
+              {t.customOrder.features.map((item: { t: string; d: string }, i: number) => (
                 <div key={i} className="flex gap-4 border-l-2 border-[#2a9c94] pl-4 text-left">
                   <div>
                     <h4

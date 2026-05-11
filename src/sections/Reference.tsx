@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { useLang } from "../context/Langcontext";
 
 function useInView(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
@@ -15,29 +16,28 @@ function useInView(threshold = 0.1) {
   return { ref, inView };
 }
 
-export default function MachineReference() {
+export default function Reference() {
   const { ref: headerRef, inView: headerIn } = useInView();
   const { ref: gridRef, inView: gridIn } = useInView(0.1);
+  const { t } = useLang();
 
   const machineBrands = [
-    { name: "FANUC", logo: "/logobrand/fanuc.png" },
-    { name: "MITSUBISHI ELECTRIC", logo: "/logobrand/mitsubishi.png" },
-    { name: "SANYO DENKI", logo: "/logobrand/sanyo-denki.png" },
-    { name: "TSUGAMI", logo: "/logobrand/tsugami.png" },
-    { name: "STAR", logo: "/logobrand/star.png" },
-    { name: "CITIZEN CINCOM", logo: "/logobrand/citizen.png" },
-    { name: "MIYANO", logo: "/logobrand/miyano.png" },
-    { name: "BROTHER", logo: "/logobrand/brother.png" },
-    { name: "MORI SEIKI", logo: "/logobrand/mori.png" },
-    { name: "GOODWAY", logo: "/logobrand/goodway.png" },
-    { name: "YASKAWA", logo: "/logobrand/yaskawa.png" },
+    { name: "KYOWA NT", logo: "/logobrand/kyowa.png" },
+    { name: "OHASHI TECHNICA,INC", logo: "/logobrand/ohashi.png" },
+    { name: "DELTA", logo: "/logobrand/delta.jpg" },
+    { name: "NIHON SEIKI", logo: "/logobrand/nihon-seiki.png" },
+    { name: "E & H", logo: "/logobrand/eh.png" },
+    { name: "YAMAZEN", logo: "/logobrand/yamazen.png" },
+    { name: "BELTON TECHNOLOGY", logo: "/logobrand/belton.png" },
+    { name: "DAIWA", logo: "/logobrand/daiwa.png" },
+    { name: "RONDA", logo: "/logobrand/ronda.png" },
+
   ];
 
-  // marquee: duplicate array เพื่อให้วน loop ได้ไม่สะดุด
   const marqueeItems = [...machineBrands, ...machineBrands];
 
   return (
-    <section id="machine-reference" className="py-20 px-6 bg-slate-50 overflow-hidden">
+    <section id="reference" className="py-20 px-6 bg-slate-50/80 overflow-hidden">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
@@ -51,26 +51,46 @@ export default function MachineReference() {
           }}
         >
           <div className="max-w-2xl">
-            <h2 className="text-[#2a9c94] font-bold tracking-widest text-sm uppercase mb-3 border-l-4 border-[#2a9c94] pl-4">
-              Authorized Service & Spare Parts
+            <div className="accent-bar" />
+            <h2
+              className="text-[#2a9c94] font-bold tracking-widest text-sm uppercase mb-3 border-l-4 border-[#2a9c94] pl-4"
+              style={{ fontFamily: "'Outfit', sans-serif" }}
+            >
+              {t.reference.label}
             </h2>
-            <p className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
-              Machines <span className="text-[#2a9c94]">Reference</span> Service
+            <p
+              className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight"
+              style={{ fontFamily: "'Outfit', sans-serif" }}
+            >
+              {t.reference.title1} <span className="text-[#2a9c94]">{t.reference.title2}</span> {t.reference.title3}
             </p>
           </div>
-          <p className="text-slate-500 text-sm md:max-w-xs leading-relaxed">
-            เชี่ยวชาญการซ่อมบำรุงและจัดหาอะไหล่สำหรับเครื่องจักร CNC แบรนด์ชั้นนำระดับโลก
-          </p>
+          <div className="flex flex-col items-end gap-2">
+            <p className="text-slate-500 text-sm md:max-w-xs leading-relaxed text-right">
+              {t.reference.sub}
+            </p>
+            <div className="flex items-center gap-2 bg-[#2a9c94]/10 border border-[#2a9c94]/20 rounded-full px-4 py-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#2a9c94] animate-pulse inline-block" />
+              <span
+                className="text-[#2a9c94] text-xs font-bold uppercase tracking-widest"
+                style={{ fontFamily: "'Outfit', sans-serif" }}
+              >
+                {machineBrands.length}+ Global Brands
+              </span>
+            </div>
+          </div>
         </div>
 
-        {/* Marquee Ticker */}
+        {/* Brand showcase card */}
         <div
           ref={gridRef}
-          className="bg-white rounded-[3rem] py-10 shadow-sm border border-slate-100 overflow-hidden"
+          className="bg-white rounded-[3rem] py-10 overflow-hidden"
           style={{
             opacity: gridIn ? 1 : 0,
             transform: gridIn ? "translateY(0)" : "translateY(40px)",
             transition: "opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s",
+            boxShadow: "0 4px 32px -8px rgba(42,156,148,0.12), 0 1px 4px rgba(0,0,0,0.04)",
+            border: "1px solid rgba(226,232,240,0.8)",
           }}
         >
           {/* Infinite marquee row */}
@@ -90,22 +110,13 @@ export default function MachineReference() {
                     <img
                       src={brand.logo}
                       alt={brand.name}
-                      className="max-w-full max-h-full object-contain"
-                      style={{
-                        filter: "grayscale(1) opacity(0.5)",
-                        transition: "filter 0.4s ease, transform 0.3s ease",
-                      }}
-                      onMouseEnter={(e) => {
-                        (e.target as HTMLImageElement).style.filter = "grayscale(0) opacity(1)";
-                        (e.target as HTMLImageElement).style.transform = "scale(1.1)";
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.target as HTMLImageElement).style.filter = "grayscale(1) opacity(0.5)";
-                        (e.target as HTMLImageElement).style.transform = "scale(1)";
-                      }}
+                      className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
                     />
                   </div>
-                  <span className="mt-2 text-[9px] font-bold text-slate-300 group-hover:text-[#2a9c94] transition-colors uppercase tracking-widest text-center leading-tight">
+                  <span
+                    className="mt-2 text-[9px] font-bold text-slate-400 group-hover:text-[#2a9c94] transition-colors uppercase tracking-widest text-center leading-tight"
+                    style={{ fontFamily: "'Outfit', sans-serif" }}
+                  >
                     {brand.name}
                   </span>
                 </div>
@@ -113,8 +124,8 @@ export default function MachineReference() {
             </div>
           </div>
 
-          {/* Static grid สำหรับ screen ขนาดใหญ่ (ซ่อนได้ถ้าต้องการ marquee อย่างเดียว) */}
-          <div className="hidden lg:grid grid-cols-6 gap-8 items-center px-16 mt-10 pt-8 border-t border-slate-50">
+          {/* Static grid for large screens */}
+          <div className="hidden lg:grid grid-cols-6 gap-8 items-center px-16 mt-10 pt-8 border-t border-slate-100">
             {machineBrands.slice(0, 6).map((brand, index) => (
               <div
                 key={index}
@@ -125,20 +136,24 @@ export default function MachineReference() {
                   transition: `opacity 0.5s ease ${0.1 + index * 0.07}s, transform 0.5s ease ${0.1 + index * 0.07}s`,
                 }}
               >
-                <div className="w-full aspect-[3/2] flex items-center justify-center p-3 rounded-2xl group-hover:bg-slate-50 transition-colors">
+                <div className="w-full aspect-[3/2] flex items-center justify-center p-3 rounded-2xl group-hover:bg-slate-50 group-hover:shadow-sm transition-all duration-300">
                   <img
                     src={brand.logo}
                     alt={brand.name}
-                    className="max-w-full max-h-full object-contain brand-logo"
+                    className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
-                <span className="mt-2 text-[9px] font-bold text-slate-300 group-hover:text-[#2a9c94] transition-colors uppercase tracking-widest">
+                <span
+                  className="mt-2 text-[9px] font-bold text-slate-400 group-hover:text-[#2a9c94] transition-colors uppercase tracking-widest"
+                  style={{ fontFamily: "'Outfit', sans-serif" }}
+                >
                   {brand.name}
                 </span>
               </div>
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );
