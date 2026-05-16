@@ -62,7 +62,7 @@ export default function Reference() {
               className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight"
               style={{ fontFamily: "'Outfit', sans-serif" }}
             >
-              {t.reference.title1} <span className="text-[#2a9c94]">{t.reference.title2}</span> {t.reference.title3}
+              {t.reference.title1} <span className="text-[#2a9c94]">{t.reference.title2}</span>
             </p>
           </div>
           <div className="flex flex-col items-end gap-2">
