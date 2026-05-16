@@ -9,6 +9,7 @@ export const translations = {
       reference: "ลูกค้าอ้างอิง", contact: "ติดต่อเรา",
       catalog: "ดาวน์โหลดแคตตาล็อก (PDF)",
       cncParts: "ชิ้นส่วน CNC (BAFI)", industrialOil: "น้ำมันอุตสาหกรรม (MORIDOX)",
+      cncController: "CNC Controller",
     },
     hero: {
       badge: "ผู้เชี่ยวชาญระบบอุตสาหกรรม",
@@ -57,57 +58,52 @@ export const translations = {
       ],
     },
     products: {
-      label: "สินค้าคุณภาพ", title1: "สินค้า", title2: "& โซลูชัน",
-      all: "ทั้งหมด", cnc: "ชิ้นส่วน CNC", oil: "น้ำมันอุตสาหกรรม",
-      quote: "ขอใบเสนอราคา (Quotation)", interested: "สนใจสินค้า",
-      quoteBtn: "ขอใบเสนอราคา (Quotation)",
+      label: "สินค้าของเรา",
+      title1: "อะไหล่เครื่องจักร",
+      title2: "และอุปกรณ์อุตสาหกรรม",
+      all: "ทั้งหมด",
+      cnc: "ชิ้นส่วน CNC",
+      controller: "CNC Controller",
+      oil: "น้ำมันอุตสาหกรรม",
+      quoteBtn: "ขอใบเสนอราคา",
       items: [
-        {
-          title: "Collet Chuck & Guide Bush",
-          description: "อุปกรณ์จับยึดความแม่นยำสูง รองรับเครื่อง Cincom, Tsugami, Star, Miyano",
-          specs: ["High Quality Carbide & HSS", "Smooth & Grooved bore", "รองรับ Special Customize"],
-        },
-        {
-          title: "ER Collet",
-          description: "หัวจับดอกเครื่องมือตัดมาตรฐานสูง นิยมสูงสุดในงาน CNC",
-          specs: ["จับชิ้นงานได้แน่นหนา", "เปลี่ยนเครื่องมือได้รวดเร็ว", "มีช่วงขนาดการจับที่ยืดหยุ่น"],
-        },
-        {
-          title: "Fan Motor & Spare Parts",
-          description: "พัดลมระบายอากาศและอะไหล่สำหรับตู้คอนโทรลเครื่องจักร CNC",
-          specs: ["High Speed Ventilation", "Long Life Bearing", "Fanuc & Mitsubishi Compatible"],
-        },
-        {
-          title: "Drill Sleeve",
-          description: "โซลูชันสำหรับการเจาะและต๊าปเกลียวประสิทธิภาพสูง",
-          specs: ["Ultra Precision Performance", "Maximum Productivity", "High Speed Steel & Carbide"],
-        },
-        {
-          title: "Bearing",
-          description: "ลูกปืนคุณภาพสูงสำหรับเครื่องจักร ลดแรงเสียดทาน ยืดอายุการใช้งาน",
-          specs: ["ลื่นไหลไม่กินแรง", "ช่วยลดการสึกหรอ", "ยืดอายุการใช้งาน"],
-        },
-        {
-          title: "LCD Display",
-          description: "จอภาพแบบแบนคุณภาพสูงสำหรับเครื่องจักร CNC",
-          specs: ["ประหยัดพลังงาน", "ความคมชัดสูง", "น้ำหนักเบา"],
-        },
-        {
-          title: "Battery Lithium",
-          description: "แบตเตอรี่ลิเธียมประสิทธิภาพสูงสำหรับระบบสำรองข้อมูล CNC",
-          specs: ["อายุการใช้งานยาวนาน", "ความหนาแน่นพลังงานสูง", "น้ำหนักเบา"],
-        },
-        {
-          title: "Fanuc AC Servo Motor",
-          description: "มอเตอร์เซอร์โวคุณภาพสูงสำหรับเครื่องจักร CNC และระบบอัตโนมัติ",
-          specs: ["ประหยัดพลังงาน", "ระบบ HRV เพิ่มประสิทธิภาพ", "ทนทาน บำรุงรักษาง่าย"],
-        },
-        {
-          title: "MORIDOX Industrial Oil",
-          description: "น้ำมันหล่อลื่นและน้ำมันตัดกลึงประสิทธิภาพสูง สูตร Green Global Product",
-          specs: ["Cutting Oil สำหรับ Stainless & Aluminum", "Hydraulic & Gear Oil", "Grease คุณภาพสูง"],
-        },
-      ],
+  // 1 - 8: ชิ้นส่วน CNC (index 0 - 7)
+  { title: "Collet Chuck & Guide Bush", description: "อุปกรณ์จับยึดความแม่นยำสูง รองรับเครื่อง Cincom, Tsugami, Star, Miyano", specs: ["High Quality Carbide & HSS", "Smooth & Grooved bore", "รองรับ Special Customize"] },
+  { title: "ER Collet", description: "หัวจับดอกเครื่องมือตัดมาตรฐานสูง นิยมสูงสุดในงาน CNC", specs: ["จับชิ้นงานได้แน่นหนา", "เปลี่ยนเครื่องมือได้รวดเร็ว", "มีช่วงขนาดการจับที่ยืดหยุ่น"] },
+  { title: "Fan Motor & Spare Parts", description: "พัดลมระบายอากาศและอะไหล่สำหรับตู้คอนโทรลเครื่องจักร CNC", specs: ["High Speed Ventilation", "Long Life Bearing", "Fanuc & Mitsubishi Compatible"] },
+  { title: "Drill Sleeve", description: "โซลูชันสำหรับการเจาะและต๊าปเกลียวประสิทธิภาพสูง", specs: ["Ultra Precision Performance", "Maximum Productivity", "High Speed Steel & Carbide"] },
+  { title: "Bearing", description: "ลูกปืนคุณภาพสูงสำหรับเครื่องจักร ลดแรงเสียดทาน ยืดอายุการใช้งาน", specs: ["ลื่นไหลไม่กินแรง", "ช่วยลดการสึกหรอ", "ยืดอายุการใช้งาน"] },
+  { title: "LCD Display", description: "จอภาพแบบแบนคุณภาพสูงสำหรับเครื่องจักร CNC", specs: ["ประหยัดพลังงาน", "ความคมชัดสูง", "น้ำหนักเบา"] },
+  { title: "Battery Lithium", description: "แบตเตอรี่ลิเธียมประสิทธิภาพสูงสำหรับระบบสำรองข้อมูล CNC", specs: ["อายุการใช้งานยาวนาน", "ความหนาแน่นพลังงานสูง", "น้ำหนักเบา"] },
+  { title: "Fanuc AC Servo Motor", description: "มอเตอร์เซอร์โวคุณภาพสูงสำหรับเครื่องจักร CNC และระบบอัตโนมัติ", specs: ["ประหยัดพลังงาน", "ระบบ HRV เพิ่มประสิทธิภาพ", "ทนทาน บำรุงรักษาง่าย"] },
+  
+  // 9: น้ำมันอุตสาหกรรม (index 8)
+  { title: "MORIDOX Industrial Oil", description: "น้ำมันหล่อลื่นและน้ำมันตัดกลึงประสิทธิภาพสูง สูตร Green Global Product", specs: ["Cutting Oil สำหรับ Stainless & Aluminum", "Hydraulic & Gear Oil", "Grease คุณภาพสูง"] },
+  
+  // 10 - 18: กลุ่มแบรนด์ FANUC ย่อย (index 9 - 17)
+  { title: "FANUC Controller Panel", description: "แผงระบบควบคุมและหน้าจอคอนโทรลเลอร์หลักของ FANUC", specs: ["ระบบปฏิบัติการเสถียร", "หน้าจอทนทานต่ออุตสาหกรรม", "อินเทอร์เฟซใช้งานง่าย"] },
+  { title: "FANUC CNC Controller Board", description: "บอร์ดประมวลผลหลัก (Main Board) สำหรับระบบควบคุมเครื่องจักร CNC", specs: ["ชิปประมวลผลความเร็วสูง", "อะไหล่แท้ตรงรุ่น", "ผ่านการทดสอบระบบ 100%"] },
+  { title: "FANUC Axis Card", description: "การ์ดควบคุมแกนการเคลื่อนที่ (Axis Control Card) สำหรับเครื่องจักร CNC", specs: ["ควบคุมแกนได้อย่างแม่นยำ", "ตอบสนองสัญญาณรวดเร็ว", "ลดความผิดพลาดของพิกัด"] },
+  { title: "FANUC Encoder Cable", description: "สายสัญญาณเอ็นโค้ดเดอร์คุณภาพสูง ป้องกันสัญญาณรบกวนได้ดีเยี่ยม", specs: ["ฉนวนหนาทนน้ำมันและความร้อน", "หัวคอนเนคเตอร์มาตรฐานโรงงาน", "ส่งสัญญาณชีพจรได้อย่างเสถียร"] },
+  { title: "FANUC Encoder Pulse Coder", description: "ตัวตรวจจับตำแหน่งและคอยล์ชีพจร (Pulse Coder) สำหรับมอเตอร์", specs: ["ความละเอียดพัลส์สูง", "วัดตำแหน่งพิกัดแม่นยำระดับไมครอน", "ติดตั้งเข้าคู่กับเซอร์โวมอเตอร์แท้"] },
+  { title: "FANUC Power Supply Module", description: "โมดูลภาคจ่ายไฟสำหรับระบบขับเคลื่อนและบอร์ดคอนโทรล FANUC", specs: ["ระบบป้องกันไฟกระชาก", "จ่ายกระแสไฟนิ่งและเสถียร", "ทนต่อความร้อนสะสมสูง"] },
+  { title: "FANUC Servo Drive", description: "ไดรฟ์เวอร์ควบคุมเซอร์โวมอเตอร์ (Servo Amplifier) ประสิทธิภาพสูง", specs: ["ระบบระบายความร้อนดีเยี่ยม", "ควบคุมแรงบิดและกระแสไฟแม่นยำ", "รองรับงานหนักต่อเนื่อง 24 ชม."] },
+  { title: "FANUC Servo Motor", description: "เซอร์โวมอเตอร์กระแสสลับ แรงบิดสูง ตอบสนองได้อย่างรวดเร็ว", specs: ["โครงสร้างกันละอองน้ำและฝุ่น", "อัตราเร่งสูงและสม่ำเสมอ", "บำรุงรักษาง่าย อายุการใช้งานยาวนาน"] },
+  { title: "FANUC Spindle Sensor", description: "เซนเซอร์ตรวจจับความเร็วรอบและตำแหน่งของแกนหมุน Spindle", specs: ["ตรวจจับความเร็วรอบสูงได้อย่างแม่นยำ", "ทนต่อแรงสั่นสะเทือน", "ช่วยให้งานกลึง/กัดเรียบเนียน"] },
+
+  // 19 - 24: กลุ่มแบรนด์ MITSUBISHI ย่อย (index 18 - 23)
+  { title: "MITSUBISHI CNC Controller", description: "ชุดระบบควบคุมเครื่องจักร CNC คอนโทรลเลอร์หลักแบรนด์ MITSUBISHI", specs: ["High Reliability", "Industrial Grade", "Original Compatible"] },
+  { title: "MITSUBISHI Cable & Connector", description: "ชุดสายสัญญาณและหัวต่อคอนเนคเตอร์เกรดอุตสาหกรรม", specs: ["ทนทานต่อสารเคมีและน้ำมัน", "เชื่อมต่อแน่นหนา สัญญาณไม่ขาดหาย", "ลดสัญญาณรบกวนในระบบ"] },
+  { title: "MITSUBISHI Encoder Unit", description: "ตัวตรวจจับระยะพิกัดการหมุน (Encoder) สำหรับระบบ MITSUBISHI", specs: ["แม่นยำสูงพิเศษ", "โครงสร้างแข็งแรงทนทาน", "ส่งข้อมูลความเร็วรอบเสถียร"] },
+  { title: "MITSUBISHI Power Supply", description: "ภาคจ่ายไฟและชุดกรองกระแสไฟฟ้าสำหรับตู้คอนโทรลเครื่องจักร", specs: ["แรงดันเสถียรป้องกันบอร์ดช็อต", "ระบบเซฟตี้ตัดไฟอัตโนมัติ", "ประสิทธิภาพการแปลงพลังงานสูง"] },
+  { title: "MITSUBISHI Servo Drive", description: "ชุดแอมพลิฟายเออร์ขับเคลื่อนเซอร์โว (Servo Drive) เกรดพรีเมียม", specs: ["Stable Performance", "Long Service Life", "Factory Compatible"] },
+  { title: "MITSUBISHI Servo Motor", description: "มอเตอร์เซอร์โวควบคุมพิกัดและแรงบิดสำหรับเครื่องจักร MITSUBISHI", specs: ["แรงบิดต่อเนื่องสม่ำเสมอ", "ทำงานเงียบและนิ่ง", "ตอบสนองต่อคำสั่งฉับไว"] },
+
+  // 25 - 27: แบรนด์อื่น ๆ ค้างเดิมไว้ (index 24 - 26)
+  { title: "SANYODENKI CNC Controller", description: "อะไหล่และคอนโทรลเลอร์ SANYODENKI สำหรับระบบอัตโนมัติ", specs: ["Servo Compatible", "High Precision", "Industrial Standard"] },
+  { title: "OKUMA CNC Controller", description: "อะไหล่บอร์ดควบคุมและระบบคอนโทรลเครื่องจักร OKUMA", specs: ["High Accuracy", "Machine Compatible", "Reliable Operation"] },
+  { title: "YASKAWA CNC Controller", description: "ชุดควบคุมและบอร์ดเซอร์โวไดรฟ์เวอร์ระบบ YASKAWA", specs: ["Motion Control", "Servo System", "Industrial Automation"] },
+],
     },
     customOrder: {
       label: "ผลิตพิเศษเฉพาะคุณ", title1: "สั่งจัดทำพิเศษ", title2: "Customized Tooling",
@@ -162,9 +158,9 @@ export const translations = {
       sub: "เชี่ยวชาญการซ่อมบำรุงและจัดหาอะไหล่สำหรับเครื่องจักร CNC แบรนด์ชั้นนำระดับโลก",
     },
     reference: {
-      label: "บริการและอะไหล่ที่ได้รับอนุญาต",
-      title: "Machines Reference Service",
-      title1: "Machines", title2: "Reference", title3: "Service",
+      label: "ลูกค้าที่ไว้วางใจ",
+      title: "Customer Reference",
+      title1: "Customer", title2: "Reference",
       sub: "เชี่ยวชาญการซ่อมบำรุงและจัดหาอะไหล่สำหรับเครื่องจักร CNC แบรนด์ชั้นนำระดับโลก",
     },
   },
@@ -176,6 +172,7 @@ export const translations = {
       reference: "Reference", contact: "Contact Us",
       catalog: "Download Catalog (PDF)",
       cncParts: "CNC Spare Parts (BAFI)", industrialOil: "Industrial Oil (MORIDOX)",
+      cncController: "CNC Controller",
     },
     hero: {
       badge: "Industrial Specialist",
@@ -225,56 +222,54 @@ export const translations = {
     },
     products: {
       label: "Premium Inventory", title1: "Quality", title2: "Products & Solutions",
-      all: "ALL", cnc: "CNC SPARE PARTS", oil: "INDUSTRIAL OIL",
+      all: "ALL", cnc: "CNC SPARE PARTS", controller: "CNC CONTROLLER", oil: "INDUSTRIAL OIL",
+      controllerBrands: {
+        fanuc: "FANUC",
+        mitsubishi: "MITSUBISHI",
+        sanyodenki: "SANYODENKI",
+        okuma: "OKUMA",
+        yaskawa: "YASKAWA",
+      },
       quote: "Request Quotation", interested: "Interested in",
       quoteBtn: "Request Quotation",
       items: [
-        {
-          title: "Collet Chuck & Guide Bush",
-          description: "High-precision clamping tools, compatible with Cincom, Tsugami, Star, Miyano machines.",
-          specs: ["High Quality Carbide & HSS", "Smooth & Grooved bore", "Special Customize available"],
-        },
-        {
-          title: "ER Collet",
-          description: "High-standard cutting tool holder, most popular in CNC machining.",
-          specs: ["Secure workpiece grip", "Fast tool change", "Flexible size range"],
-        },
-        {
-          title: "Fan Motor & Spare Parts",
-          description: "Cooling fans and spare parts for CNC machine control cabinets.",
-          specs: ["High Speed Ventilation", "Long Life Bearing", "Fanuc & Mitsubishi Compatible"],
-        },
-        {
-          title: "Drill Sleeve",
-          description: "High-performance drilling and tapping solutions.",
-          specs: ["Ultra Precision Performance", "Maximum Productivity", "High Speed Steel & Carbide"],
-        },
-        {
-          title: "Bearing",
-          description: "High-quality bearings for machinery — reduces friction and extends service life.",
-          specs: ["Low friction operation", "Reduced wear", "Extended service life"],
-        },
-        {
-          title: "LCD Display",
-          description: "High-quality flat panel displays for CNC machines.",
-          specs: ["Energy saving", "High resolution", "Lightweight"],
-        },
-        {
-          title: "Battery Lithium",
-          description: "High-performance lithium batteries for CNC data backup systems.",
-          specs: ["Long service life", "High energy density", "Lightweight"],
-        },
-        {
-          title: "Fanuc AC Servo Motor",
-          description: "High-quality servo motors for CNC machines and automation systems.",
-          specs: ["Energy efficient", "HRV system for enhanced performance", "Durable and easy to maintain"],
-        },
-        {
-          title: "MORIDOX Industrial Oil",
-          description: "High-performance lubricants and cutting oils — Green Global Product formula.",
-          specs: ["Cutting Oil for Stainless & Aluminum", "Hydraulic & Gear Oil", "High-quality Grease"],
-        },
-      ],
+  // 1 - 8: CNC Parts (index 0 - 7)
+  { title: "Collet Chuck & Guide Bush", description: "High-precision clamping tools, compatible with Cincom, Tsugami, Star, Miyano machines.", specs: ["High Quality Carbide & HSS", "Smooth & Grooved bore", "Special Customize available"] },
+  { title: "ER Collet", description: "High-standard cutting tool holder, most popular in CNC machining.", specs: ["Secure workpiece grip", "Fast tool change", "Flexible size range"] },
+  { title: "Fan Motor & Spare Parts", description: "Cooling fans and spare parts for CNC machine control cabinets.", specs: ["High Speed Ventilation", "Long Life Bearing", "Fanuc & Mitsubishi Compatible"] },
+  { title: "Drill Sleeve", description: "High-performance drilling and tapping solutions.", specs: ["Ultra Precision Performance", "Maximum Productivity", "High Speed Steel & Carbide"] },
+  { title: "Bearing", description: "High-quality bearings for machinery — reduces friction and extends service life.", specs: ["Low friction operation", "Reduced wear", "Extended service life"] },
+  { title: "LCD Display", description: "High-quality flat panel displays for CNC machines.", specs: ["Energy saving", "High resolution", "Lightweight"] },
+  { title: "Battery Lithium", description: "High-performance lithium batteries for CNC data backup systems.", specs: ["Long service life", "High energy density", "Lightweight"] },
+  { title: "Fanuc AC Servo Motor", description: "High-quality servo motors for CNC machines and automation systems.", specs: ["Energy efficient", "HRV system for enhanced performance", "Durable and easy to maintain"] },
+  
+  // 9: Industrial Oil (index 8)
+  { title: "MORIDOX Industrial Oil", description: "High-performance lubricants and cutting oils — Green Global Product formula.", specs: ["Cutting Oil for Stainless & Aluminum", "Hydraulic & Gear Oil", "High-quality Grease"] },
+  
+  // 10 - 18: FANUC Sub-brands (index 9 - 17)
+  { title: "FANUC Controller Panel", description: "Main operator control panel and display interface units for FANUC machines.", specs: ["Stable OS Architecture", "Heavy-duty Display Glass", "Intuitive User Interface"] },
+  { title: "FANUC CNC Controller Board", description: "Main processing motherboard units for CNC machine computational intelligence.", specs: ["High-speed Microprocessing", "Genuine OEM Standard", "100% Pre-tested & Certified"] },
+  { title: "FANUC Axis Card", description: "Motion axis control cards tailored for sub-micron path positioning accuracy.", specs: ["Fine Axis Coordinate Control", "Instant Signal Feedback", "Error Margin Minimization"] },
+  { title: "FANUC Encoder Cable", description: "Premium shielded feedback encoder cables built to withstand severe workspace environments.", specs: ["Oil & Heat Resistant Jacket", "Factory-grade Connectors", "Stable Pulse Transmission"] },
+  { title: "FANUC Encoder Pulse Coder", description: "High-resolution positional sensor and feedback pulse units for servo setups.", specs: ["High Pulse Density Counting", "Micron-level Axis Tracking", "Perfect Motor Compatibility"] },
+  { title: "FANUC Power Supply Module", description: "Regulated energy management and power regulation modules for stable operations.", specs: ["Surge Protection Circuitry", "Consistent Current Supply", "High Thermal Tolerance"] },
+  { title: "FANUC Servo Drive", description: "High-efficiency servo amplifier drives regulating power distribution and motor control loops.", specs: ["Excellent Thermal Management", "Precise Torque Adjustment", "24/7 Continuous Heavy Loading"] },
+  { title: "FANUC Servo Motor", description: "AC servo motors delivering immense torque power and hyper-reactive step motion.", specs: ["Dust & Water Splashing Guard", "Sustained High Acceleration", "Minimal Maintenance Overhead"] },
+  { title: "FANUC Spindle Sensor", description: "Advanced rotational speed and positioning feedback sensors for cutting spindles.", specs: ["High-RPM Calculation Precision", "Vibration Isolation Build", "Ensures Smooth Surface Finishes"] },
+
+  // 19 - 24: MITSUBISHI Sub-brands (index 18 - 23)
+  { title: "MITSUBISHI CNC Controller", description: "MITSUBISHI genuine main control units and processing computer sets for CNC lines.", specs: ["High Reliability", "Industrial Grade", "Original Compatible"] },
+  { title: "MITSUBISHI Cable & Connector", description: "Industrial-grade interface cables and heavy-duty connection modules.", specs: ["Chemical & Coolant Shielding", "Snug-fit Anti-disconnection", "Noise Suppression Design"] },
+  { title: "MITSUBISHI Encoder Unit", description: "Rotational vector and positional encoder units for MITSUBISHI layouts.", specs: ["Ultra-fine Precision Rating", "Rugged Structural Housing", "Smooth RPM Velocity Output"] },
+  { title: "MITSUBISHI Power Supply", description: "Power converter modules and electricity filtration packs for machine cabinets.", specs: ["Regulated Anti-short-circuit", "Automatic Safety Cut-off", "Excellent Energy Efficiency"] },
+  { title: "MITSUBISHI Servo Drive", description: "Premium quality servo amplifier and drive control units for heavy machinery.", specs: ["Stable Performance", "Long Service Life", "Factory Compatible"] },
+  { title: "MITSUBISHI Servo Motor", description: "High-grade feedback servo motors regulating strict torque and velocity limits.", specs: ["Constant Torque Retention", "Quiet & Vibe-free Performance", "Rapid Instruction Execution"] },
+
+  // 25 - 27: Other Brands (index 24 - 26)
+  { title: "SANYODENKI CNC Controller", description: "SANYODENKI spare parts and controller solutions for automation systems.", specs: ["Servo Compatible", "High Precision", "Industrial Standard"] },
+  { title: "OKUMA CNC Controller", description: "OKUMA specialized machine controllers and processing board assemblies.", specs: ["High Accuracy", "Machine Compatible", "Reliable Operation"] },
+  { title: "YASKAWA CNC Controller", description: "YASKAWA motion control boards and advanced servo drive setups.", specs: ["Motion Control", "Servo System", "Industrial Automation"] },
+],
     },
     customOrder: {
       label: "Exclusive Manufacturing", title1: "Custom Made", title2: "Customized Tooling",
@@ -330,8 +325,8 @@ export const translations = {
     },
     reference: {
       label: "Authorized Service & Spare Parts",
-      title: "Machines Reference Service",
-      title1: "Machines", title2: "Reference", title3: "Service",
+      title: "Customer Reference",
+      title1: "Customer", title2: "Reference",
       sub: "Specializing in maintenance and spare parts sourcing for world-leading CNC machine brands.",
     },
   },

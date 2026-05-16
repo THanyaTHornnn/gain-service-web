@@ -1,9 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useLang } from "../context/Langcontext";
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isProductOpen, setIsProductOpen] = useState(false);
+  const [isSubOpen, setIsSubOpen] = useState(false); // ควบคุมเปิดแบรนด์ย่อยบน Desktop
+  const [isMobileControllerOpen, setIsMobileControllerOpen] = useState(false); // สำหรับยุบ-ขยายแบรนด์บนมือถือ
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [activeDetail] = useState<any>(null);
@@ -50,10 +53,12 @@ export default function Navbar() {
       : "text-lx hover:text-[#f2e900]";
   };
 
-  const productItems = [
-    { name: t.nav.cncParts, href: "#products-cnc" },
-    { name: t.nav.industrialOil, href: "#products-oil" },
-    { name: t.nav.catalog, href: "/Gain-service-catalouge.pdf", highlight: true },
+  const controllerBrands = [
+    { name: "FANUC", href: "#products-controller-fanuc" },
+    { name: "MITSUBISHI", href: "#products-controller-mitsubishi" },
+    { name: "SANYODENKI", href: "#products-controller-sanyodenki" },
+    { name: "OKUMA", href: "#products-controller-okuma" },
+    { name: "YASKAWA", href: "#products-controller-yaskawa" },
   ];
 
   return (
@@ -107,9 +112,11 @@ export default function Navbar() {
           <div
             className="relative group py-2"
             onMouseEnter={() => setIsProductOpen(true)}
-            onMouseLeave={() => setIsProductOpen(false)}
+            onMouseLeave={() => {
+              setIsProductOpen(false);
+              setIsSubOpen(false);
+            }}
           >
-            {/* คลิกที่ชื่อ Products → scroll ไป #products */}
             <a
               href="#products"
               onClick={(e) => {
@@ -128,24 +135,71 @@ export default function Navbar() {
             </a>
 
             {isProductOpen && (
-              <div className="absolute top-full left-0 w-64 bg-white shadow-2xl rounded-2xl py-3 border border-slate-100 animate-fadeInUp overflow-hidden">
+              <div className="absolute top-full left-0 w-64 bg-white shadow-2xl rounded-2xl py-3 border border-slate-100 animate-fadeInUp overflow-visible">
                 <div className="px-4 pb-2 pt-1">
                   <p className="text-[10px] font-black text-[#2a9c94] uppercase tracking-widest">Our Products</p>
                 </div>
-                {productItems.map((item, idx) => (
+                
+                {/* ชิ้นส่วน CNC (BAFI) */}
+                <a
+                  href="#products-cnc"
+                  className="block px-5 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-[#2a9c94] transition-colors"
+                  style={{ fontFamily: "'Sarabun', sans-serif" }}
+                >
+                  {t.nav.cncParts}
+                </a>
+
+                {/* CNC Controller Multi-level Dropdown */}
+                <div 
+                  className="relative"
+                  onMouseEnter={() => setIsSubOpen(true)}
+                  onMouseLeave={() => setIsSubOpen(false)}
+                >
                   <a
-                    key={idx}
-                    href={item.href}
-                    className={`block px-5 py-2.5 text-sm transition-colors ${
-                      item.highlight
-                        ? "text-[#2a9c94] font-bold border-t border-slate-100 mt-1 hover:bg-[#2a9c94] hover:text-white"
-                        : "text-slate-600 hover:bg-slate-50 hover:text-[#2a9c94]"
-                    }`}
+                    href="#products-controller"
+                    className="flex justify-between items-center px-5 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-[#2a9c94] transition-colors"
                     style={{ fontFamily: "'Sarabun', sans-serif" }}
                   >
-                    {item.name}
+                    <span>{t.nav.cncController}</span>
+                    <svg className="w-3 h-3 text-slate-400 group-hover:text-[#2a9c94]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
                   </a>
-                ))}
+
+                  {/* Sub-Dropdown สำหรับแบรนด์คอนโทรลเลอร์ */}
+                  {isSubOpen && (
+                    <div className="absolute left-full top-0 w-56 bg-white shadow-2xl rounded-2xl py-2 border border-slate-100 ml-0.5 animate-fadeInLeft">
+                      {controllerBrands.map((brand, bIdx) => (
+                        <a
+                          key={bIdx}
+                          href={brand.href}
+                          className="block px-5 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-[#2a9c94] transition-colors"
+                          style={{ fontFamily: "'Sarabun', sans-serif" }}
+                        >
+                          {brand.name}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* น้ำมันอุตสาหกรรม (MORIDOX) */}
+                <a
+                  href="#products-oil"
+                  className="block px-5 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-[#2a9c94] transition-colors"
+                  style={{ fontFamily: "'Sarabun', sans-serif" }}
+                >
+                  {t.nav.industrialOil}
+                </a>
+
+                {/* ดาวน์โหลดแคตตาล็อก */}
+                <a
+                  href="/Gain-service-catalouge.pdf"
+                  className="block px-5 py-2.5 text-sm text-[#2a9c94] font-bold border-t border-slate-100 mt-1 hover:bg-[#2a9c94] hover:text-white transition-colors"
+                  style={{ fontFamily: "'Sarabun', sans-serif" }}
+                >
+                  {t.nav.catalog}
+                </a>
               </div>
             )}
           </div>
@@ -186,7 +240,6 @@ export default function Navbar() {
 
         {/* Mobile Hamburger */}
         <div className="flex items-center gap-3 md:hidden">
-          {/* Mobile lang toggle */}
           <div className="lang-toggle">
             <button className={`lang-btn ${lang === "th" ? "active" : ""}`} onClick={() => setLang("th")}>TH</button>
             <button className={`lang-btn ${lang === "en" ? "active" : ""}`} onClick={() => setLang("en")}>EN</button>
@@ -206,21 +259,52 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {isOpen && (
         <div
-          className="absolute top-full left-0 w-full border-t border-slate-100 flex flex-col items-center gap-4 py-8 md:hidden bg-white text-slate-700 shadow-xl"
+          className="absolute top-full left-0 w-full border-t border-slate-100 flex flex-col items-center gap-4 py-8 md:hidden bg-white text-slate-700 shadow-xl overflow-y-auto max-h-[85vh]"
           style={{ fontFamily: "'Sarabun', sans-serif" }}
         >
           <a href="#home" className="font-semibold" onClick={() => setIsOpen(false)}>{t.nav.home}</a>
           <a href="#services" className="font-semibold" onClick={() => setIsOpen(false)}>{t.nav.services}</a>
 
-          <div className="flex flex-col items-center gap-2 bg-slate-50 w-full py-4">
-            <span className="font-black text-[#2a9c94] text-sm uppercase tracking-widest" style={{ fontFamily: "'Outfit', sans-serif" }}>
+          {/* Mobile Products Sections */}
+          <div className="flex flex-col items-center bg-slate-50 w-full py-4 px-6">
+            <span className="font-black text-[#2a9c94] text-sm uppercase tracking-widest mb-2" style={{ fontFamily: "'Outfit', sans-serif" }}>
               {t.nav.products}
             </span>
-            {productItems.map((item, idx) => (
-              <a key={idx} href={item.href} className="text-sm py-1 text-slate-600" onClick={() => setIsOpen(false)}>
-                {item.name}
-              </a>
-            ))}
+            
+            {/* แฟลตเมนูย่อยบนมือถือ */}
+            <a href="#products-cnc" className="text-sm py-1.5 text-slate-600 font-medium" onClick={() => setIsOpen(false)}>
+              {t.nav.cncParts}
+            </a>
+            
+            {/* CNC Controller Accordion บน Mobile */}
+            <div className="w-full flex flex-col items-center">
+              <button 
+                onClick={() => setIsMobileControllerOpen(!isMobileControllerOpen)}
+                className="text-sm py-1.5 text-slate-600 font-medium flex items-center gap-1.5"
+              >
+                <span>{t.nav.cncController}</span>
+                <svg className={`w-3 h-3 transition-transform ${isMobileControllerOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              
+              {isMobileControllerOpen && (
+                <div className="flex flex-col items-center bg-white/60 w-full py-1.5 rounded-xl border border-slate-100 gap-1 my-1">
+                  {controllerBrands.map((brand, bIdx) => (
+                    <a key={bIdx} href={brand.href} className="text-xs py-1 text-slate-500 hover:text-[#2a9c94]" onClick={() => setIsOpen(false)}>
+                      ├─ {brand.name}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <a href="#products-oil" className="text-sm py-1.5 text-slate-600 font-medium" onClick={() => setIsOpen(false)}>
+              {t.nav.industrialOil}
+            </a>
+            <a href="/Gain-service-catalouge.pdf" className="text-sm py-1.5 text-[#2a9c94] font-bold" onClick={() => setIsOpen(false)}>
+              {t.nav.catalog}
+            </a>
           </div>
 
           <a href="#custom-order" className="font-semibold" onClick={() => setIsOpen(false)}>{t.nav.customOrder}</a>
